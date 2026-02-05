@@ -1,74 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>I-5 Schools Exposure Web Map</title>
-  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-
-  <!-- Mapbox GL JS -->
-  <link href="https://api.mapbox.com/mapbox-gl-js/v2.19.0/mapbox-gl.css" rel="stylesheet">
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.19.0/mapbox-gl.js"></script>
-
-  <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-    #map {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 100%;
-    }
-    .layer-control {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(255,255,255,0.9);
-      padding: 10px;
-      border-radius: 5px;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      z-index: 1;
-    }
-  </style>
+<meta charset="utf-8">
+<title>I5 & Schools Web Map</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js"></script>
+<style>
+  body { margin: 0; padding: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
 </head>
-
 <body>
-
 <div id="map"></div>
-
-<div class="layer-control">
-  <strong>Layers</strong><br>
-  <label><input type="checkbox" id="tileset1" checked> Basemap</label><br>
-  <label><input type="checkbox" id="tileset2"> I-5 + Schools</label><br>
-  <label><input type="checkbox" id="tileset3"> Basemap + Data</label><br>
-  <label><input type="checkbox" id="tileset4"> Buffer / Thematic</label>
-</div>
-
 <script>
-  // Create an empty-style map (NO access token required)
+  mapboxgl.accessToken = 'pk.eyJ1IjoibWF0aGZhMDMiLCJhIjoiY21reXBpcWs1MDlncDNkb283NjkzemRjdyJ9.1z-iTe7Q_gIPYRqaFojIlw'; 
   const map = new mapboxgl.Map({
     container: 'map',
-    style: {
-      version: 8,
-      sources: {},
-      layers: []
-    },
-    center: [-122.33, 47.60], // Seattle
-    zoom: 12                 // MUST be within 11–15
+    style: {version: 8, sources: {}, layers: []}, // empty style
+    center: [-122.33, 47.6], // Seattle
+    zoom: 12
   });
 
-  map.addControl(new mapboxgl.NavigationControl(), 'top-right');
-  map.addControl(new mapboxgl.ScaleControl({ maxWidth: 100, unit: 'metric' }));
-
   map.on('load', () => {
-
-    // TILE SET 1 – BASEMAP
+    // Tile set 1
     map.addSource('tileset1', {
       type: 'raster',
-      tiles: ['assets/tile set 1/{z}/{x}/{y}.png'],
+      tiles: ['assets/tile_set_1/{z}/{x}/{y}.png'],
       tileSize: 256,
       attribution: 'Basemap tiles by Macklin Farrell'
     });
@@ -76,32 +34,51 @@
       id: 'tileset1-layer',
       type: 'raster',
       source: 'tileset1',
-      layout: { visibility: 'visible' }
+      layout: { 'visibility': 'visible' }
     });
 
-    // TILE SET 2 – I-5 + SCHOOLS
+    // Tile set 2
     map.addSource('tileset2', {
       type: 'raster',
-      tiles: ['assets/tile set 2/{z}/{x}/{y}.png'],
+      tiles: ['assets/tile_set_2/{z}/{x}/{y}.png'],
       tileSize: 256,
-      attribution: 'I-5 and Seattle Schools'
+      attribution: 'I5 and Seattle Schools'
     });
     map.addLayer({
       id: 'tileset2-layer',
       type: 'raster',
       source: 'tileset2',
-      layout: { visibility: 'none' }
+      layout: { 'visibility': 'visible' }
     });
 
-    // TILE SET 3 – BASEMAP + DATA
+    // Tile set 3
     map.addSource('tileset3', {
       type: 'raster',
-      tiles: ['assets/tile set 3/{z}/{x}/{y}.png'],
+      tiles: ['assets/tile_set_3/{z}/{x}/{y}.png'],
       tileSize: 256,
-      attribution: 'Basemap + I-5 + Schools'
+      attribution: 'Basemap + I5 + Seattle Schools'
     });
     map.addLayer({
       id: 'tileset3-layer',
       type: 'raster',
       source: 'tileset3',
+      layout: { 'visibility': 'visible' }
+    });
 
+    // Tile set 4
+    map.addSource('tileset4', {
+      type: 'raster',
+      tiles: ['assets/tile_set_4/{z}/{x}/{y}.png'],
+      tileSize: 256,
+      attribution: 'Thematic tiles'
+    });
+    map.addLayer({
+      id: 'tileset4-layer',
+      type: 'raster',
+      source: 'tileset4',
+      layout: { 'visibility': 'visible' }
+    });
+  });
+</script>
+</body>
+</html>
