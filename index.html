@@ -8,10 +8,10 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js"></script>
 <style>
   body { margin: 0; padding: 0; }
-  #map { position: absolute; top: 10px; bottom: 0; width: 100%; }
+  #map { position: absolute; top: 10px; bottom: 0; width: 100%; z-index: 0; }
 
   #layer {position: absolute; top: 10px; left: 10px; background: rgba(255, 255, 255, 0.9);
-  padding: 10px; border-radius: 5px; z-index: 10;}
+  padding: 10px; border-radius: 5px; z-index: 10; pointer-events: auto;}
 </style>
 </head>
 <body>
