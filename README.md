@@ -1,7 +1,8 @@
-# [School Proximity to I-5 In Seattle]
+# School Proximity to I-5 In Seattle
 
-# Macklin Farrell
-## Geog458 2/4/26
+## Macklin Farrell
+### Geog458 
+### 2/4/26
 
 # Webmap
 [You can access the map here](https://macklin-farrell.github.io/i5schools)
@@ -43,4 +44,5 @@ Descriptions:
 Tileset 1 is a basemap layer. 
 Tileset 2 is the features highlighted for focus. I-5 and the schools in Seattle. 
 Tileset 3 is a combination of the baselayer and highlighted features from tileset 2. 
+
 Tileset 4 is schools considered to be at higher risk for exposure to particulate from I-5, within 150 meters.
