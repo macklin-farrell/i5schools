@@ -5,7 +5,7 @@
 ### 2/4/26
 
 # Webmap
-[You can access the map here](https://macklin-farrell.github.io/i5schools)
+[You can access the map here](https://macklin-farrell.github.io/i5schools/)
 
 The area of focus for this map is the city of Seattle, specifically the area around Interstate 5.
 
