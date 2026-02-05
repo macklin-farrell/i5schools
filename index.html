@@ -85,7 +85,7 @@
       layout: { 'visibility': 'visible' }
     });
   });
-</script>
+
 document.getElementById('tileset1-checkbox').addEventListener('Change', function(e){
   map.setLayoutProperty('tileset1-layer', 'visibility', e.target.checked ? 'visible' : 'none');
 });
@@ -98,6 +98,7 @@ document.getElementById('tileset3-checkbox').addEventListener('Change', function
 document.getElementById('tileset4-checkbox').addEventListener('Change', function(e){
   map.setLayoutProperty('tileset4-layer', 'visibility', e.target.checked ? 'visible' : 'none');
 });
+</script>
 </body>
 </html>
 
