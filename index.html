@@ -12,6 +12,12 @@
 </style>
 </head>
 <body>
+<div> id="menu" style = position: absolute; top: 10px; left: 10px; background: white; padding: 10px; z-index: 1;"
+  <label><input type="checkbox" id="tileset1-checkbox" checked> Basemap</label><br>
+  <label><input type="checkbox" id="tileset2-checkbox" checked> I-5 + Schools</label><br>
+  <label><input type="checkbox" id="tileset3-checkbox" checked> Proximity</label><br>
+  <label><input type="checkbox" id="tileset4-checkbox" checked> Thematic</label><br>
+</div>
 <div id="map"></div>
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoibWF0aGZhMDMiLCJhIjoiY21reXBpcWs1MDlncDNkb283NjkzemRjdyJ9.1z-iTe7Q_gIPYRqaFojIlw'; 
@@ -80,6 +86,18 @@
     });
   });
 </script>
+document.getElementById('tileset1-checkbox').addEventListener('Change', function(e){
+  map.setLayoutProperty('tileset1-layer', 'visibility', e.target.checked ? 'visible' : 'none');
+});
+document.getElementById('tileset2-checkbox').addEventListener('Change', function(e){
+  map.setLayoutProperty('tileset2-layer', 'visibility', e.target.checked ? 'visible' : 'none');
+});
+document.getElementById('tileset3-checkbox').addEventListener('Change', function(e){
+  map.setLayoutProperty('tileset3-layer', 'visibility', e.target.checked ? 'visible' : 'none');
+});
+document.getElementById('tileset4-checkbox').addEventListener('Change', function(e){
+  map.setLayoutProperty('tileset4-layer', 'visibility', e.target.checked ? 'visible' : 'none');
+});
 </body>
 </html>
 
