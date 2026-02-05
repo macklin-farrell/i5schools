@@ -8,14 +8,14 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.18.1/mapbox-gl.js"></script>
 <style>
   body { margin: 0; padding: 0; }
-  #map { position: absolute; top: 10px; bottom: 0; width: 100%; z-index: 0; }
+  #map { position: absolute; top: 0; bottom: 0; width: 100%; z-index: 0; }
 
-  #layer {position: absolute; top: 10px; left: 10px; background: rgba(255, 255, 255, 0.9);
-  padding: 10px; border-radius: 5px; z-index: 10; pointer-events: auto;}
+  #menu {position: absolute; top: 10px; left: 10px; background: rgba(255, 255, 255, 0.9);
+  padding: 10px; border-radius: 5px; z-index: 9999; pointer-events: auto;}
 </style>
 </head>
 <body>
-<div id="menu" style="position: absolute; top: 10px; left: 10px; background: white; padding: 10px; z-index: 1;">
+<div id="menu">
   <label><input type="checkbox" id="tileset1-checkbox" checked> Basemap</label><br>
   <label><input type="checkbox" id="tileset2-checkbox" checked> I-5 + Schools</label><br>
   <label><input type="checkbox" id="tileset3-checkbox" checked> Proximity</label><br>
@@ -101,6 +101,13 @@ document.getElementById('tileset3-checkbox').addEventListener('change', function
 document.getElementById('tileset4-checkbox').addEventListener('change', function(e){
   map.setLayoutProperty('tileset4-layer', 'visibility', e.target.checked ? 'visible' : 'none');
 });
+
+['tileset1', 'tileset2', 'tileset3', 'tileset4'].forEach(id => {
+  document.getElementById(id+'-checkbox').addEventListener('change', e => {
+    map.setLayoutProperty(id+'-layer','visibility', e.target.checked ? 'visibile':'none');
+  });
+});
+
 </script>
 </body>
 </html>
