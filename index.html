@@ -1,0 +1,63 @@
+map.on('load', () => {
+   //Tile set 1 - Basemap
+   map.addSource('tileset1', {
+    type: 'raster',
+    tiles: ['assets/tileset_1/{z}/{x}/{y}.png'],
+    tileSize: 256,
+    attribution: 'Basemap tiles by Macklin Farrell'
+   });
+   map.addLayer({
+    id: 'tileset1-layer',
+    type: 'raster',
+    source: 'tileset1',
+    layout: {
+        //'visibility': 'visible'
+    }
+   });
+   
+    map.addSource('tileset2', {
+    type: 'raster',
+    tiles: ['assets/tileset_2/{z}/{x}/{y}.png'],
+    tileSize: 256,
+    attribution: 'I5 and Seattle Schools'
+   });
+   map.addLayer({
+    id: 'tileset2-layer',
+    type: 'raster',
+    source: 'tileset2',
+    layout: {
+        //'visibility': 'visible'
+    }
+   });
+
+    map.addSource('tileset3', {
+    type: 'raster',
+    tiles: ['assets/tileset_3/{z}/{x}/{y}.png'],
+    tileSize: 256,
+    attribution: 'Basemap + I5 + Seattle Schools'
+   });
+   map.addLayer({
+    id: 'tileset3-layer',
+    type: 'raster',
+    source: 'tileset3',
+    layout: {
+        //'visibility': 'none'
+    }
+   });
+
+    map.addSource('tileset4', {
+    type: 'raster',
+    tiles: ['assets/tileset_4/{z}/{x}/{y}.png'],
+    tileSize: 256,
+    attribution: 'Thematic tiles'
+   });
+   map.addLayer({
+    id: 'tileset4-layer',
+    type: 'raster',
+    source: 'tileset4',
+    layout: {
+        //'visibility': 'none'
+    }
+   });
+}
+)
